@@ -22,13 +22,15 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
     <div className={`flex items-center gap-4 ${className || ""}`}>
       {options.map((opt) => (
         <label
-          className="flex items-center space-x-1"
-          onClick={() => onChange(opt.value)}
+          key={opt.value}
+          className="flex items-center space-x-1 cursor-pointer"
         >
           <input
             type="radio"
             name="filter"
-            value={value}
+            value={opt.value}
+            checked={value === opt.value}
+            onChange={() => onChange(opt.value)}
             className="accent-white"
           />
           <span>{opt.label}</span>
